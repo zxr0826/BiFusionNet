@@ -21,6 +21,8 @@ You can choose BiFusionNet model in [BiFusionNet.yaml](../BiFusionNet/BiFusionNe
 Use the command python train.py to train the model
 
 ### Val
+Use the command python val.py to test the model
+
 
 
 
