@@ -18,5 +18,9 @@ pip install -e .
 
 ### Train
 You can choose BiFusionNet model in [BiFusionNet.yaml](../BiFusionNet/BiFusionNet.yaml)
+Use the command python train.py to train the model
+
+### Val
+
 
 
