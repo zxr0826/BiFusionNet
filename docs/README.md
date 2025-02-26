@@ -17,6 +17,6 @@ pip install -e .
 ```
 
 ### Train
-You can choose BiFusionNet model in [BiFusionNet.yaml](./BiFusionNet/BiFusionNet.yaml)
+You can choose BiFusionNet model in [BiFusionNet.yaml](BiFusionNet/BiFusionNet.yaml)
 
 
