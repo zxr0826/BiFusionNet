@@ -16,4 +16,7 @@ pip install timm==1.0.7 thop efficientnet_pytorch==0.7.1 einops grad-cam==1.4.8 
 pip install -e .
 
 
+### Train
+You can choose BiFusionNet model in [BiFusionNet.yaml](./BiFusionNet/BiFusionNet.yaml)
+
 
