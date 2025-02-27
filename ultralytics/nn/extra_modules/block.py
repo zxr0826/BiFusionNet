@@ -56,10 +56,10 @@ __all__ = ['DyHeadBlock', 'DyHeadBlockWithDCNV3', 'Fusion', 'C3k2_Faster', 'C3k2
            'C3k2_Star', 'C3k2_Star_CAA', 'C3k2_KAN', 'EIEStem', 'C3k2_EIEM', 'ContextGuideFusionModule', 'C3k2_DEConv',
            'C3k2_SMPCGLU', 'C3k2_Heat', 'SBA', 'WaveletPool', 'WaveletUnPool', 'CSP_PTB', 'GLSA', 'CSPOmniKernel', 'WTConv2d', 'C3k2_WTConv',
            'RCM', 'PyramidContextExtraction', 'DynamicInterpolationFusion', 'FuseBlockMulti', 'FeaturePyramidSharedConv', 'C3k2_FMB', 'LDConv', 'C3k2_gConv', 'C3k2_WDBB', 'C3k2_DeepDBB',
-           'C3k2_AdditiveBlock', 'C3k2_AdditiveBlock_CGLU', 'CSP_MSCB', 'EUCB', 'C3k2_MSMHSA_CGLU', 'CSP_PMSFA', 'C3k2_MogaBlock', 'C3k2_SHSA', 'C3k2_SHSA_CGLU', 'C3k2_SMAFB', 'C3k2_SMAFB_CGLU',
+           'C3k2_AdditiveBlock', 'C3k2_AdditiveBlock_CGLU', 'MSCB', 'EUCB', 'C3k2_MSMHSA_CGLU', 'CSP_PMSFA', 'C3k2_MogaBlock', 'C3k2_SHSA', 'C3k2_SHSA_CGLU', 'C3k2_SMAFB', 'C3k2_SMAFB_CGLU',
            'DynamicAlignFusion', 'C3k2_IdentityFormer', 'C3k2_RandomMixing', 'C3k2_PoolingFormer', 'C3k2_ConvFormer', 'C3k2_CaFormer', 'C3k2_IdentityFormerCGLU', 'C3k2_RandomMixingCGLU', 'C3k2_PoolingFormerCGLU', 'C3k2_ConvFormerCGLU', 'C3k2_CaFormerCGLU',
            'C3k2_MutilScaleEdgeInformationEnhance', 'C3k2_FFCM', 'C3k2_SFHF', 'CSP_FreqSpatial', 'C3k2_MSM', 'C3k2_MutilScaleEdgeInformationSelect', 'C3k2_HDRAB', 'C3k2_RAB', 'C3k2_LFE', 'C3k2_FCA_SFA', 'C3k2_FCA_CTA', 'ConvEdgeFusion', 'MutilScaleEdgeInfoGenetator',
-           'C3k2_IDWB', 'C3k2_IDWC', 'C3k2_PConv', 'C3k2_EMA', 'C3k2_CAMixer', 'MANet', 'HyperComputeModule', 'MANet_FasterBlock', 'MANet_FasterCGLU', 'MANet_Star', 'MultiScaleGatedAttn', 'C3k2_HFERB', 'C3k2_DTAB', 'DTAB', 'C3k2_JDPM', 'C3k2_ETB', 'ETB', 'C3k2_FDT',
+           'C3k2_IDWB', 'C3k2_IDWC', 'C3k2_PConv', 'C3k2_EMA', 'C3k2_CAMixer', 'MANet', 'HyperComputeModule', 'MANet_FasterBlock', 'MANet_FasterCGLU', 'MANet_Star', 'DBFIG', 'C3k2_HFERB', 'C3k2_DTAB', 'DTAB', 'C3k2_JDPM', 'C3k2_ETB', 'ETB', 'C3k2_FDT',
            'WFU', 'FDT', 'C3k2_AP', 'PSConv', 'ContrastDrivenFeatureAggregation', 'C3k2_ELGCA', 'C3k2_ELGCACGLU', 'C3k2_Strip', 'C3k2_StripCGLU', 'MultiScalePCA', 'MultiScalePCA_Down', 'FSA', 'C3k2_Kat', 'C3k2_Faster_KAN', 'C3k2_DCMB', 'C3k2_DCMB_KAN', 'C3k2_GlobalFilter',
            'C3k2_DynamicFilter'
            ]
@@ -7694,7 +7694,7 @@ class MSCB(nn.Module):
         x = x.view(batchsize, -1, height, width)
         return x
 
-class CSP_MSCB(C2f):
+class MSCB(C2f):
     def __init__(self, c1, c2, n=1, kernel_sizes=[1,3,5], shortcut=False, g=1, e=0.5):
         super().__init__(c1, c2, n, shortcut, g, e)
         
@@ -10641,7 +10641,7 @@ class MultiscaleFusion(nn.Module):
     return fuse
 
 
-class MultiScaleGatedAttn(nn.Module):
+class DBFIG(nn.Module):
     # Version 1
   def __init__(self, dims):
     super().__init__()

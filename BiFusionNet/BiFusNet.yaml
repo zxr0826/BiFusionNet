@@ -9,7 +9,7 @@ scales: # model compound scaling constants, i.e. 'model=yolov8n-cls.yaml' will c
   x: [1.00, 1.25, 512] # YOLOv8x summary: 365 layers, 68229648 parameters, 68229632 gradients, 258.5 GFLOPs
 
 fusion_mode: bifpn
-node_mode: CSP_MSCB
+node_mode: MSCB
 head_channel: 128
 
 backbone:
@@ -23,7 +23,7 @@ backbone:
   - [-1, 1, DWConv, [64, 3, 2, 1, False]]  # 5-P3/8
   - [-1, 3, HGBlock, [32, 64, 3]]   # 6-P3/8
 
-  - [[3, 6], 1, MultiScaleGatedAttn, []] # 7-P3/8
+  - [[3, 6], 1, DBFIG, []] # 7-P3/8
 
   - [7, 1, Conv, [128, 3, 2]]  # 8-P4/16
   - [-1, 2, C3k2, [128, True]] # 9-P4/16
@@ -31,7 +31,7 @@ backbone:
   - [7, 1, DWConv, [128, 3, 2, 1, False]]  # 10-P4/16
   - [-1, 3, HGBlock, [64, 128, 5, True, False]]  #11 cm, c2, k, light, shortcut
   
-  - [[9, 11], 1, MultiScaleGatedAttn, []] # 12-P4/16
+  - [[9, 11], 1, DBFIG, []] # 12-P4/16
 
   - [12, 1, Conv, [256, 3, 2]]  # 13-P5/32
   - [-1, 2, C3k2, [256, True]] # 14-P5/32
@@ -39,7 +39,7 @@ backbone:
   - [12, 1, DWConv, [256, 3, 2, 1, False]]  # 15-P5/32
   - [-1, 3, HGBlock, [128, 256, 5, True, False]]  # 16-P5/32
 
-  - [[14, 16], 1, MultiScaleGatedAttn, []] # 17-P5/32
+  - [[14, 16], 1, DBFIG, []] # 17-P5/32
 
 # YOLOv8.0n head
 head:
@@ -61,4 +61,4 @@ head:
   - [[-1, -2, 18], 1, Fusion, [fusion_mode]] # 30
   - [-1, 3, node_mode, [head_channel, [1,3,5]]] # 31-P3/8
 
-  - [[31, 27, 23], 1, Detect_Efficient, [nc]] # Detect(P3, P4, P5)
+  - [[31, 27, 23], 1, LightWeight_Detection, [nc]] # Detect(P3, P4, P5)
