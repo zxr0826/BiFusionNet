@@ -60,3 +60,4 @@ head:
   - [1, 1, Conv, [head_channel, 3, 2]] # 29-P3/8
   - [[-1, -2, 18], 1, Fusion, [fusion_mode]] # 30
   - [-1, 3, node_mode, [head_channel, [1,3,5]]] # 31-P3/8
+  - [[31, 27, 23], 1, LightWeight_Detection, [nc]] # Detect(P3, P4, P5)
